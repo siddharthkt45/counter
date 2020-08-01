@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="#8E24AA">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:textSize="34sp"
+        android:fontFamily="sans-serif-black"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:text="COUNTIT" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="330sp"
+        android:layout_gravity="center"
+        android:layout_height="50sp"
+        android:layout_marginTop="70sp"
+        android:ems="10"
+        android:background="@drawable/round_edit"
+        android:inputType="textPersonName"
+        android:hint="Subject Name"
+        android:textAlignment="center"/>
+    <LinearLayout
+        android:layout_width="330sp"
+        android:layout_height="100sp"
+        android:orientation="vertical"
+        android:background="@drawable/round_layout_bg"
+        android:layout_gravity="center"
+        android:layout_marginTop="50sp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="300sp"
+            android:layout_height="70sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="50sp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="count" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="390sp"
+        android:layout_height="400sp"
+        android:background="#8E24AA"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/round_edit"
+            android:text="Create"
+            android:padding="5sp"
+            android:layout_margin="5sp"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/round_edit"
+            android:padding="5sp"
+            android:layout_margin="5sp"
+            android:layout_gravity="center"
+            android:text="View" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/round_edit"
+            android:layout_gravity="center"
+            android:text="Update" />
+    </LinearLayout>
+</LinearLayout>
+
+
