@@ -19,20 +19,21 @@ public class MyHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE Questions (ID INTERGER PRIMARY KEY AUTOINCREMENT , SUBJECT TEXT , COUNT INTEGER )");
+        sqLiteDatabase.execSQL("CREATE TABLE Questions (ID INTEGER PRIMARY KEY AUTOINCREMENT, SUBJECT TEXT , COUNT INTEGER )");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + name1);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Questions");
         onCreate(sqLiteDatabase);
     }
 
     public boolean InsertIt(String subjectName){
+        int s = 0;
         sqLiteDatabase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("SUBJECT",subjectName);
-        values.put("COUNT",0);
+        values.put("COUNT",s);
         int z = (int) sqLiteDatabase.insert("Questions",null,values);
         if(z == -1)
             return false;
@@ -41,18 +42,20 @@ public class MyHelper extends SQLiteOpenHelper {
 
     public Cursor Viewit(String subjectName){
         sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Questions WHERE SUBJECT = " +subjectName ,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Questions WHERE TRIM(SUBJECT) = '"+subjectName.trim()+"'",null);
         return  cursor;
     }
 
     public boolean UpdateIt(String subjectName){
         sqLiteDatabase = this.getWritableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Questions WHERE SUBJECT = "+subjectName,null);
-        int i = parseInt(cursor.getString(1));
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM Questions WHERE TRIM(SUBJECT) = '"+subjectName.trim()+"'",null);
+        cursor.moveToNext();
+        int i = parseInt(cursor.getString(2));
         i++;
         ContentValues values = new ContentValues();
         values.put("COUNT",i);
-        if(sqLiteDatabase.insert(name1,null,values) == -1)
+        int a = (int) sqLiteDatabase.update("Questions",values,"SUBJECT=?",new String[]{subjectName});
+        if( a == -1)
             return false;
         return true;
     }
