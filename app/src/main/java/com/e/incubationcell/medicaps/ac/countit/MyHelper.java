@@ -19,7 +19,7 @@ public class MyHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE Questions (ID INTERGER PRIMARY KEY AUTOINCREMENT , SUBJECT TEXT , COUNT INTERGER )");
+        sqLiteDatabase.execSQL("CREATE TABLE Questions (ID INTERGER PRIMARY KEY AUTOINCREMENT , SUBJECT TEXT , COUNT INTEGER )");
     }
 
     @Override
